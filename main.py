@@ -137,7 +137,6 @@ class GameWidget(Widget):
 
         Window.bind(on_resize=self._on_window_resize)
 
-        self.keysPressed = set()
         self._entities = set()
 
         Clock.schedule_interval(self._on_frame,0)
@@ -205,12 +204,10 @@ class GameWidget(Widget):
         self._keyboard = None
     
     def _on_key_down(self, keyboard, keycode, text, modifiers):
-        print('down', text)
         self.pressed_keys.add(text)
 
     def _on_key_up(self, keyboard, keycode):
         text = keycode[1]
-        print('up', text)
         if text in self.pressed_keys:
             self.pressed_keys.remove(text)
 
